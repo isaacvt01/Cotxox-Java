@@ -1,5 +1,7 @@
 package edu.craptocraft.carrera;
 
+import edu.craptocraft.tarifa.Tarifa;
+
 public class Carrera {
     private int tiempoEsperado = 0;
     private int tiempoCarrera = 0;
@@ -9,6 +11,7 @@ public class Carrera {
 
     private String origen;
     private String destino;
+    private Tarifa tarifa = new Tarifa();
 
     public Carrera(String tarjetaCredito) {
         this.tarjetaCredito = tarjetaCredito;
@@ -31,6 +34,9 @@ public class Carrera {
     public void setTiempoEsperado(int tiempoEsperado) {
         this.tiempoEsperado = tiempoEsperado;
     }
+    public int getTiempoEsperado(){
+        return this.tiempoEsperado;
+    }
 
     public void setDestino(String destino) {
         this.destino = destino;
@@ -42,5 +48,8 @@ public class Carrera {
 
     public double getDistancia() {
         return this.distancia;
+    }
+    public double getCosteEsperado(Carrera this){
+        return this.tarifa.getCosteTotalEsperado(this);
     }
 }
